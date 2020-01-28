@@ -17,8 +17,8 @@ class SliderController extends Controller
      */
     public function index()
     {
-        $slides = Slider::all();
-        //dd($slides);
+        $slides = Slider::all()->toArray();
+        //dd($slides->toArray());
         return view('admin.slider.index', compact('slides'));
     }
 

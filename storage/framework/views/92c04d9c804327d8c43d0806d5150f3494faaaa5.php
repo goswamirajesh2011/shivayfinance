@@ -42,11 +42,25 @@
                             </tr>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         <?php else: ?>
-                        <tr >
-                            <td colspan="5">No slides found !!</td>
+                        <tr class="text-center">
+                            <td colspan="5">
+                                <p class="text-danger">
+                                    <i class="fa fa-ban" aria-hidden="true"></i>
+                                    <strong>No slides found !!</strong>
+                                </p>
+                            </td>
                         </tr>
                         <?php endif; ?>
                     </tbody>
+                    <tfoot class="thead-dark">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Caption</th>
+                            <th scope="col">Slide</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </tfoot>
                 </table>
             </div>
         </div>
@@ -57,8 +71,6 @@
 <?php $__env->startSection('js'); ?>
 <script type="text/javascript">
     $(document).ready(function(){
-        //<?php echo e(route('admin.slider.destroy', $slide->id)); ?>
-
         $('.deleteSlide').on('click', function(){
             if( confirm("Delete Slide ?") ){
                 var slide_del_url = $(this).data('slide_del_url');
