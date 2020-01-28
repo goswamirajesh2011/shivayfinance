@@ -1,0 +1,11 @@
+.top-menu{
+	padding: 0px;
+	height: 30px;
+}
+.top-menu .nav-item{
+	padding-right: 10px;
+}
+
+.main-menu{
+	padding: 20px 0px;
+}

@@ -1,0 +1,12 @@
+{
+    "name": "rajesh/slider",
+    "description": "A basic slider",
+    "type": "plugin",
+    "authors": [
+        {
+            "name": "Rajesh Goswami",
+            "email": "goswami.rajesh.2011@gmail.com"
+        }
+    ],
+    "require": {}
+}
