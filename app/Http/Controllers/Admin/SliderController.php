@@ -17,8 +17,8 @@ class SliderController extends Controller
      */
     public function index()
     {
-        $slides = Slider::all()->toArray();
-        //dd($slides->toArray());
+        $slides = Slider::where(["status" => 1])->get();
+        //dd($slides);
         return view('admin.slider.index', compact('slides'));
     }
 
@@ -77,9 +77,11 @@ class SliderController extends Controller
      * @param  \App\Slider  $slider
      * @return \Illuminate\Http\Response
      */
-    public function edit(Slider $slider)
+    public function edit($id)
     {
-        return view('admin.slider.edit');
+        $slide = Slider::find($id);
+        //dd($slider->toArray());
+        return view('admin.slider.edit', compact('slide'));
     }
 
     /**
@@ -89,9 +91,26 @@ class SliderController extends Controller
      * @param  \App\Slider  $slider
      * @return \Illuminate\Http\Response
      */ 
-    public function update(Request $request, Slider $slider)
+    public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            "name" => "required",
+            "caption" => "required",
+        ]);
+        $slide = Slider::find($id);
+        $slide->name = $request->name;
+        $slide->caption = $request->caption;
+        if( $request->hasFile('slide') ){
+            $path = public_path("storage\slider\\$slide->slide");
+            if( File::Exists($path) ){
+                File::Delete($path);
+            }
+            $storagePath = $request->file('slide')->store('slider', 'public');
+            $slide->slide = basename($storagePath);
+            //dd($path);
+        }
+        $slide->save();
+        return redirect()->route('admin.slider.index');
     }
 
     /**

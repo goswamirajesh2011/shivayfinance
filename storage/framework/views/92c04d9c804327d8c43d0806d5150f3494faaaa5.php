@@ -24,7 +24,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php if(!empty($slides)): ?>
+                        <?php if( !empty($slides->toArray()) ): ?>
                             <?php $__currentLoopData = $slides; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $slide): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <tr>
                                 <th scope="row"><?php echo e($slide->id); ?></th>

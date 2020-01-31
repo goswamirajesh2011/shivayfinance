@@ -26,7 +26,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @if(!empty($slides))
+                        @if( !empty($slides->toArray()) )
                             @foreach($slides as $slide)
                             <tr>
                                 <th scope="row">{{ $slide->id }}</th>
