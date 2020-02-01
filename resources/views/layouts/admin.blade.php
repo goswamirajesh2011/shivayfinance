@@ -64,7 +64,7 @@
                with font-awesome or any other icon font library -->
             <li class="nav-item">
                 <a href="{{ config('app.url') }}" title="{{ config('app.name') }}" class="nav-link" target="_blank">
-                  <i class="nav-icon fas fa-tachometer-alt"></i>
+                  <i class="nav-icon fas fa-anchor"></i>
                   <p>Visit Site</p>
                 </a>
             </li>
@@ -76,7 +76,7 @@
             </li>
             <li class="nav-item has-treeview">
                 <a href="#" class="nav-link">
-                  <i class="nav-icon fas fa-tachometer-alt"></i>
+                  <i class="nav-icon fas fa-image"></i>
                   <p>
                     Slider
                     <i class="right fas fa-angle-left"></i>
@@ -85,13 +85,36 @@
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
                     <a href="{{ route('admin.slider.index') }}" class="nav-link active">
-                      <i class="far fa-circle nav-icon"></i>
+                      <i class="far fa fa-list nav-icon"></i>
                       <p>All</p>
                     </a>
                   </li>
                   <li class="nav-item">
                     <a href="{{ route('admin.slider.create') }}" class="nav-link active">
-                      <i class="far fa-circle nav-icon"></i>
+                      <i class="far fa fa-plus nav-icon"></i>
+                      <p>Add New</p>
+                    </a>
+                  </li>
+                </ul>
+            </li>
+            <li class="nav-item has-treeview">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-credit-card"></i>
+                  <p>
+                    Loan
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="{{ route('admin.loan.index') }}" class="nav-link active">
+                      <i class="far fa fa-list nav-icon"></i>
+                      <p>All</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="{{ route('admin.loan.create') }}" class="nav-link active">
+                      <i class="far fa fa-plus nav-icon"></i>
                       <p>Add New</p>
                     </a>
                   </li>

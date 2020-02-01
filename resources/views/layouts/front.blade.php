@@ -20,6 +20,9 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
     <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('slick/slick.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('slick/slick-theme.css') }}">
 </head>
 <body>
     <div id="app">
@@ -137,9 +140,20 @@
             </div>
         </nav>
 
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12 p-0">
+                    @yield('slider')
+                </div>
+            </div>
+        </div>
         <main class="py-4">
             @yield('content')
         </main>
     </div>
+
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
+    <script src="{{ asset('slick/slick.js') }}" type="text/javascript" charset="utf-8"></script>
+    @yield('js')
 </body>
 </html>

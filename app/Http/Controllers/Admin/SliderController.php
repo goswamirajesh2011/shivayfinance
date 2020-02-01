@@ -17,7 +17,7 @@ class SliderController extends Controller
      */
     public function index()
     {
-        $slides = Slider::where(["status" => 1])->get();
+        $slides = Slider::get();
         //dd($slides);
         return view('admin.slider.index', compact('slides'));
     }

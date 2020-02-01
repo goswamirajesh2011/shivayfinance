@@ -11,10 +11,10 @@
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     //return view('welcome');
     return view('index');
-});
+});*/
 
 Auth::routes();
 
@@ -28,4 +28,12 @@ Route::group([
 	], function(){
 		Route::get('dashboard', 'AdminController@dashboard')->name('dashboard');
 		Route::resource('slider', 'SliderController');
+		Route::resource('loan', 'LoanController');
+});
+
+Route::group([
+		'namespace'=>'Front',
+		'as'=>'front',
+	], function(){
+		Route::get('/', 'FrontController@index')->name('index');
 });
