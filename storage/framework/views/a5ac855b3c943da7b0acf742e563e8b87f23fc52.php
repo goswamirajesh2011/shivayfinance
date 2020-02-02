@@ -28,7 +28,7 @@
                             <tr>
                                 <th scope="row"><?php echo e($loan->id); ?></th>
                                 <td><?php echo e($loan->name); ?></td>
-                                <td><?php echo e($loan->description); ?></td>
+                                <td><?php echo e(substr($loan->description, 0, 100)); ?>...</td>
                                 <td>
                                     <a href="<?php echo e(route('admin.loan.edit', $loan->id)); ?>" title="Edit Loan">
                                         <i class="fa fa-edit" aria-hidden="true"></i>

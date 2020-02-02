@@ -152,6 +152,7 @@
         <main class="py-4">
             <?php echo $__env->yieldContent('content'); ?>
         </main>
+        <?php echo $__env->make('layouts.front.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     </div>
 
     <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>

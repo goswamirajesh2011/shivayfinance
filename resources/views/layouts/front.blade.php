@@ -150,6 +150,7 @@
         <main class="py-4">
             @yield('content')
         </main>
+        @include('layouts.front.footer')
     </div>
 
     <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>

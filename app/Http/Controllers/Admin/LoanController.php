@@ -44,12 +44,12 @@ class LoanController extends Controller
         ]);
         //dd($request);
 
-        $slider = Slider::create([
+        $loan = Loan::create([
             'name' => $request->name,
             'description' => $request->description,
             'status' => 1
         ]);
-        $slider->save();
+        $loan->save();
         return redirect()->route('admin.loan.index');
     }
 
@@ -88,7 +88,7 @@ class LoanController extends Controller
     {
         $this->validate($request, [
             "name" => "required",
-            "description" => "description",
+            "description" => "required",
         ]);
         $loan = Loan::find($id);
         $loan->name = $request->name;

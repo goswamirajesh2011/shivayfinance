@@ -30,7 +30,7 @@
                             <tr>
                                 <th scope="row">{{ $loan->id }}</th>
                                 <td>{{ $loan->name }}</td>
-                                <td>{{ $loan->description }}</td>
+                                <td>{{ substr($loan->description, 0, 100) }}...</td>
                                 <td>
                                     <a href="{{ route('admin.loan.edit', $loan->id) }}" title="Edit Loan">
                                         <i class="fa fa-edit" aria-hidden="true"></i>
