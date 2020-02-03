@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Slider;
+use App\Loan;
 
 class FrontController extends Controller
 {
@@ -15,7 +16,7 @@ class FrontController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        //$this->middleware('auth');
     }
 
     /**
@@ -24,7 +25,8 @@ class FrontController extends Controller
 	*/
     public function index(){
     	$slides = Slider::where(["status"=>1])->get();
-    	//dd($slides->toArray());
-    	return view('front.index', compact('slides'));
+        $loans = Loan::get();
+    	//dd($loans->toArray());
+    	return view('front.index', compact('slides', 'loans'));
     }
 }

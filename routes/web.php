@@ -29,6 +29,7 @@ Route::group([
 		Route::get('dashboard', 'AdminController@dashboard')->name('dashboard');
 		Route::resource('slider', 'SliderController');
 		Route::resource('loan', 'LoanController');
+		Route::resource('partner', 'PartnerController');
 });
 
 Route::group([

@@ -57,7 +57,6 @@ class SliderController extends Controller
         ]);
         $slider->save();
         return redirect()->route('admin.slider.index');
-        //echo $storageName;
     }
 
     /**

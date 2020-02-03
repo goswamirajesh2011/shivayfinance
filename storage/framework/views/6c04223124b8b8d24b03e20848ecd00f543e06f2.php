@@ -155,7 +155,7 @@
         <?php echo $__env->make('layouts.front.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     </div>
 
-    <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
+    <script src="<?php echo e(asset('js/jquery-2.2.0.min.js')); ?>" type="text/javascript"></script>
     <script src="<?php echo e(asset('slick/slick.js')); ?>" type="text/javascript" charset="utf-8"></script>
     <?php echo $__env->yieldContent('js'); ?>
 </body>

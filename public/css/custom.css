@@ -50,3 +50,13 @@
 .slick-prev, .slick-next{
 	z-index: 9;
 }
+.margin-b{
+    margin-bottom: 10px;
+}
+.page-footer, .page-footer a, .page-footer p{
+    color: #fff;
+}
+
+.slick-prev:before, .slick-next:before{
+    color: #38c172 !important;
+}

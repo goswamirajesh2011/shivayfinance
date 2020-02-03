@@ -153,7 +153,7 @@
         @include('layouts.front.footer')
     </div>
 
-    <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
+    <script src="{{ asset('js/jquery-2.2.0.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('slick/slick.js') }}" type="text/javascript" charset="utf-8"></script>
     @yield('js')
 </body>
