@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 use App\Partner;
 
 class PartnerController extends Controller
@@ -15,7 +17,7 @@ class PartnerController extends Controller
      */
     public function index()
     {
-        $partners = Partner::get();
+        $partners = Partner::paginate(5);
         //dd($partners);
         return view('admin.partner.index', compact('partners'));
     }

@@ -60,3 +60,8 @@
 .slick-prev:before, .slick-next:before{
     color: #38c172 !important;
 }
+a.nav-link:hover, a.nav-link:focus {
+    background-color: #38c172;
+    color: #fff !important;
+    border-radius: 8px;
+}

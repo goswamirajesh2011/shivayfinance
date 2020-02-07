@@ -23,7 +23,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php if( !empty($loans->toArray()) ): ?>
+                        <?php if( !$loans->isEmpty() ): ?>
                             <?php $__currentLoopData = $loans; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $loan): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <tr>
                                 <th scope="row"><?php echo e($loan->id); ?></th>
@@ -60,6 +60,7 @@
                     </tfoot>
                 </table>
             </div>
+            
         </div>
     </div>
 </div>

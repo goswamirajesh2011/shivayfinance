@@ -1,75 +1,143 @@
 @extends('layouts.front')
 
-@section('slider')
-    @if(!empty($slides->toArray()))
-    <section class="slider">
-        @foreach($slides as $slide)
-        <div>
-            <img src='{{ asset("storage/slider/$slide->slide") }}' class="img-responsive">
-        </div>
-        @endforeach
-    </section>
-    @else
-    <div class="alert alert-danger text-center">No slides found !! Add from admin dashboard</div>
-    @endif
-@endsection
-
 @section('content')
-<div class="container">
-    <h1 class="text-center text-success">Our Services</h1>
-    <div class="row">
-        @if( !empty($loans->toArray()) )
-            @foreach($loans as $loan)
-            <div class="col-md-4 margin-b">
-                <div class="card">
-                    <div class="card-header border-success text-center rounded">
-                        <h4 class="text-success">{{ $loan->name }}</h4>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 p-0">
+                @if(!empty($slides->toArray()))
+                <section class="slider">
+                    @foreach($slides as $slide)
+                    <div>
+                        <img src='{{ asset("storage/slider/$slide->slide") }}' class="img-responsive">
                     </div>
-                    <div class="card-body text-justify">
-                        <p>{{ $loan->description }}</p>
-                    </div>
-                    <div class="card-footer text-center">
-                        <a href="" class="btn btn-success">Apply Now</a>
+                    @endforeach
+                </section>
+                @else
+                <div class="alert alert-danger text-center">No slides found !! Add from admin dashboard</div>
+                @endif
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1 class="text-center text-success">Our Services</h1>
+        <div class="row">
+            @if( !empty($loans->toArray()) )
+                @foreach($loans as $loan)
+                <div class="col-md-6 margin-b">
+                    <div class="card border-success">
+                        <div class="card-header bg-success text-center rounded">
+                            <h4 class="text-white">{{ $loan->name }}</h4>
+                        </div>
+                        <div class="card-body text-justify">
+                            <!--Accordion wrapper-->
+                            <div class="accordion md-accordion accordion-1" id="loanAccordion{{ $loan->id }}" role="tablist">
+                                <div class="card">
+                                    <div class="card-header border-success" role="tab" id="loanDesc{{ $loan->id }}">
+                                        <h5 class="text-uppercase mb-0 py-1">
+                                            <a class="text-success font-weight-bold" data-toggle="collapse" href="#loanDescCollapse{{ $loan->id }}" aria-expanded="true" aria-controls="loanDescCollapse{{ $loan->id }}">
+                                                Description
+                                            </a>
+                                        </h5>
+                                    </div>
+                                    <div id="loanDescCollapse{{ $loan->id }}" class="collapse show" role="tabpanel" aria-labelledby="loanDesc{{ $loan->id }}" data-parent="#loanAccordion{{ $loan->id }}">
+                                        <div class="card-body">
+                                            <p class="">{{$loan->description}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header border-success" role="tab" id="loanDocs{{ $loan->id }}">
+                                        <h5 class="text-uppercase mb-0 py-1">
+                                            <a class="collapsed font-weight-bold text-success" data-toggle="collapse" href="#loanDocsCollapse{{ $loan->id }}" aria-expanded="false" aria-controls="loanDocsCollapse{{ $loan->id }}">
+                                                Document Required
+                                            </a>
+                                        </h5>
+                                    </div>
+                                    <div id="loanDocsCollapse{{ $loan->id }}" class="collapse" role="tabpanel" aria-labelledby="loanDocs{{ $loan->id }}" data-parent="#loanAccordion{{ $loan->id }}">
+                                        <div class="card-body">
+                                            <ul>
+                                                <li>doc one</li>
+                                                <li>doc two</li>
+                                                <li>doc three</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header border-success" role="tab" id="loanFaq{{ $loan->id }}">
+                                        <h5 class="text-uppercase mb-0 py-1">
+                                            <a class="collapsed font-weight-bold text-success" data-toggle="collapse" href="#loanFaqCollapse{{ $loan->id }}" aria-expanded="false" aria-controls="loanFaqCollapse{{ $loan->id }}">FAQ</a>
+                                        </h5>
+                                    </div>
+                                    <div id="loanFaqCollapse{{ $loan->id }}" class="collapse" role="tabpanel" aria-labelledby="loanFaq{{ $loan->id }}" data-parent="#loanAccordion{{ $loan->id }}">
+                                        <div class="card-body">
+                                            <p class="">Frequently Asked questions</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Accordion wrapper-->
+                        </div>
+                        <div class="card-footer text-center">
+                            <a href="" class="btn btn-success">Apply Now</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            @endforeach
-        @else
+                @endforeach
+            @else
+                <div class="col-md-12">
+                    <div class="alert alert-danger text-center">Loans not found!! Add from dashboard</div>
+                </div>
+            @endif
+        </div>
+        <hr class="border-success">
+
+        <h1 class="text-center text-success">Who We Are ?</h1>
+        <div class="row">
             <div class="col-md-12">
-                <span class="alert alert-danger text-center">Loans not found!! Add from dashboard</span>
+                <strong>{{config('app.name')}}</strong>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry, Lorem Ipsum is simply dummy text of the printing and typesetting industry, Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry, Lorem Ipsum is simply dummy text of the printing and typesetting industry, Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
             </div>
-        @endif
-    </div>
-    <hr class="border-success">
+        </div>
+        <hr class="border-success">
 
-    <h1 class="text-center text-success">Our Customers</h1>
-    <div class="row">
-        <div class="customers"></div>
-    </div>
-    <hr class="border-success">
-</div>
+        <h1 class="text-center text-success">How It Works ?</h1>
+        <div class="row">
+            <div class="col-md-12">
+                <p></p>
+            </div>
+        </div>
+        <hr class="border-success">
 
-<h1 class="text-center text-success">Our Partners</h1>
-<div class="partners">
-    <div>
-        <img class="" title="Bank Of Baroda" src="{{ url('images/partners/bob.jpg') }}">
+        <h1 class="text-center text-success">Our Customers</h1>
+        <div class="row">
+            <div class="customers"></div>
+        </div>
+        <hr class="border-success">
     </div>
-    <div>
-        <img class="" src="{{ url('images/partners/hdfc.jpg') }}">
+
+    <h1 class="text-center text-success">Our Partners</h1>
+    @if( !empty($partners->toArray()) )
+        <div class="partners">
+        @foreach($partners as $partner)
+        <div>
+            <img class="" title="{{ $partner->caption }}" src='{{ asset("storage/partner/$partner->logo") }}'>
+        </div>
+        @endforeach
+        </div>
+    @else
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="alert alert-danger text-center">
+                    Partners not found! Add from dashboard.
+                </div>
+            </div>
+        </div>
     </div>
-    <div>
-        <img class="" src="{{ url('images/partners/bob.jpg') }}">
-    </div>
-    <div>
-        <img class="" src="{{ url('images/partners/hdfc.jpg') }}">
-    </div>
-    <div>
-        <img class="" src="{{ url('images/partners/bob.jpg') }}">
-    </div>
-    <div>
-        <img class="" src="{{ url('images/partners/hdfc.jpg') }}">
-    </div>
-</div>
+    @endif
 @endsection
 
 @section('js')

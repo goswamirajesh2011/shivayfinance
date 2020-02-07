@@ -26,15 +26,15 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-dark bg-success top-menu">
+        <nav class="navbar navbar-expand-md navbar-light top-menu">
             <div class="container">
                 <div class="collapse navbar-collapse" id="">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item text-white">
+                        <li class="nav-item">
                             <i class="fa fa-envelope-o fa-lg"></i> info@shivayfinance.com
                         </li>
-                        <li class="nav-item text-white">
+                        <li class="nav-item">
                             <i class="fa fa-volume-control-phone fa-lg text-white"></i> +91-9634433162
                         </li>
                     </ul>
@@ -42,54 +42,39 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href=""><i class="fa fa-facebook fa-lg text-white"></i></a>
+                            <a class="nav-link" href=""><i class="fa fa-facebook"></i></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href=""><i class="fa fa-instagram fa-lg text-white"></i></a>
+                            <a class="nav-link" href=""><i class="fa fa-instagram"></i></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href=""><i class="fa fa-twitter-square fa-lg text-white"></i></a>
+                            <a class="nav-link" href=""><i class="fa fa-twitter-square"></i></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href=""><i class="fa fa-youtube-play fa-lg text-white"></i></a>
+                            <a class="nav-link" href=""><i class="fa fa-youtube-play"></i></a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
-        <nav class="navbar navbar-expand-md sticky-top navbar-light bg-white shadow-sm main-menu">
+        <nav class="navbar navbar-expand-md sticky-top navbar-dark bg-success shadow-sm main-menu">
             <div class="container">
                 <a class="navbar-brand" href="<?php echo e(url('/')); ?>">
                     <?php echo e(config('app.name', 'Shivay Finance')); ?>
 
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="<?php echo e(__('Toggle navigation')); ?>">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#headerMenu" aria-controls="headerMenu" aria-expanded="false" aria-label="<?php echo e(__('Toggle navigation')); ?>">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="collapse navbar-collapse" id="headerMenu">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                          <!-- <li class="nav-item active">
-                            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                          </li> -->
-                          <li class="nav-item">
-                            <a class="nav-link" href="#">Business Loan</a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link" href="#">Home Loan</a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link" href="#">Education Loan</a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link" href="#">Car Loan</a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link" href="#">Personal Loan</a>
+                          <li class="nav-item active">
+                            <a class="nav-link text-white" href="#">Home <span class="sr-only">(current)</span></a>
                           </li>
                           <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                               Loan
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -101,6 +86,9 @@
                               <a class="dropdown-item" href="#">Personal</a>
                             </div>
                           </li>
+                          <li class="nav-item">
+                            <a class="nav-link text-white" href="<?php echo e(route('front.page', 'about')); ?>">About us</a>
+                          </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -108,11 +96,11 @@
                         <!-- Authentication Links -->
                         <?php if(auth()->guard()->guest()): ?>
                             <li class="nav-item">
-                                <a class="nav-link" href="<?php echo e(route('login')); ?>"><?php echo e(__('Login')); ?></a>
+                                <a class="nav-link text-white" href="<?php echo e(route('login')); ?>"><?php echo e(__('Login')); ?></a>
                             </li>
                             <?php if(Route::has('register')): ?>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="<?php echo e(route('register')); ?>"><?php echo e(__('Register')); ?></a>
+                                    <a class="nav-link text-white" href="<?php echo e(route('register')); ?>"><?php echo e(__('Register')); ?></a>
                                 </li>
                             <?php endif; ?>
                         <?php else: ?>
@@ -142,17 +130,10 @@
             </div>
         </nav>
 
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12 p-0">
-                    <?php echo $__env->yieldContent('slider'); ?>
-                </div>
-            </div>
-        </div>
-        <main class="py-4">
+        <main class="">
             <?php echo $__env->yieldContent('content'); ?>
         </main>
-        <?php echo $__env->make('layouts.front.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+        <?php echo $__env->make('layouts.common.front.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     </div>
 
     <script src="<?php echo e(asset('js/jquery-2.2.0.min.js')); ?>" type="text/javascript"></script>

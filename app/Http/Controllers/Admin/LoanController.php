@@ -15,8 +15,8 @@ class LoanController extends Controller
      */
     public function index()
     {
-        $loans = Loan::get();
-        //dd($slides);
+        $loans = Loan::paginate(10);
+        //dd($loans->toArray());
         return view('admin.loan.index', compact('loans'));
     }
 

@@ -34,7 +34,8 @@ Route::group([
 
 Route::group([
 		'namespace'=>'Front',
-		'as'=>'front',
+		'as'=>'front.',
 	], function(){
 		Route::get('/', 'FrontController@index')->name('index');
+		Route::get('page/{name?}', 'PageController@show')->name('page');
 });

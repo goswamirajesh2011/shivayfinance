@@ -25,7 +25,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @if( !empty($loans->toArray()) )
+                        @if( !$loans->isEmpty() )
                             @foreach($loans as $loan)
                             <tr>
                                 <th scope="row">{{ $loan->id }}</th>
@@ -62,6 +62,7 @@
                     </tfoot>
                 </table>
             </div>
+            {{-- $loans->links() --}}
         </div>
     </div>
 </div>

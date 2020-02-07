@@ -120,6 +120,29 @@
                   </li>
                 </ul>
             </li>
+            <li class="nav-item has-treeview">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-image"></i>
+                  <p>
+                    Partner
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="<?php echo e(route('admin.partner.index')); ?>" class="nav-link active">
+                      <i class="far fa fa-list nav-icon"></i>
+                      <p>All</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="<?php echo e(route('admin.partner.create')); ?>" class="nav-link active">
+                      <i class="far fa fa-plus nav-icon"></i>
+                      <p>Add New</p>
+                    </a>
+                  </li>
+                </ul>
+            </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
