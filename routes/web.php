@@ -38,4 +38,6 @@ Route::group([
 	], function(){
 		Route::get('/', 'FrontController@index')->name('index');
 		Route::get('page/{name?}', 'PageController@show')->name('page');
+		Route::get('applyloan/{loanid}', 'FrontController@applyloan')->name('applyloan');
+		Route::post('storeloan', 'FrontController@storeloan')->name('storeloan');
 });

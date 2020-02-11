@@ -1,6 +1,5 @@
 <!-- Footer -->
 <footer class="page-footer font-small blue-grey lighten-5 bg-success">
-
   <div>
     <div class="container">
 
@@ -116,13 +115,13 @@
         <h6 class="text-uppercase font-weight-bold">Contact</h6>
         <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto bg-white" style="width: 60px;">
         <p>
-          <i class="fas fa-home mr-3"></i> New York, NY 10012, US</p>
+          <i class="fa fa-home mr-3"></i> New York, NY 10012, US</p>
         <p>
-          <i class="fas fa-envelope mr-3"></i> info@example.com</p>
+          <i class="fa fa-envelope mr-3"></i> info@example.com</p>
         <p>
-          <i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
+          <i class="fa fa-phone mr-3"></i> + 01 234 567 88</p>
         <p>
-          <i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
+          <i class="fa fa-print mr-3"></i> + 01 234 567 89</p>
 
       </div>
       <!-- Grid column -->
