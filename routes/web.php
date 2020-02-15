@@ -30,6 +30,8 @@ Route::group([
 		Route::resource('slider', 'SliderController');
 		Route::resource('loan', 'LoanController');
 		Route::resource('partner', 'PartnerController');
+		Route::resource('page', 'PageController');
+		Route::post('page/slugExist/{slug?}', 'PageController@slugExist')->name('page.slugExist');
 });
 
 Route::group([
