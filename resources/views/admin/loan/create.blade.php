@@ -31,7 +31,15 @@
 								</div>
 								<div class="form-group">
 									<label for="description">Description</label>
-									<textarea class="form-control" name="description" id="description"></textarea>
+									<textarea class="form-control description" name="description" id="description"></textarea>
+								</div>
+								<div class="form-group">
+									<label for="doc_req">Document Required</label>
+									<textarea class="form-control doc_req" name="doc_req" id="doc_req"></textarea>
+								</div>
+								<div class="form-group">
+									<label for="faq">FAQ (Frequently Asked Question)</label>
+									<textarea class="form-control faq" name="faq" id="faq"></textarea>
 								</div>
 							</div>
 			                <!-- /.card-body -->
@@ -47,4 +55,14 @@
 		</div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
+@endsection
+
+@section('js')
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.description').summernote();
+		$('.doc_req').summernote();
+		$('.faq').summernote();
+	});
+</script>
 @endsection

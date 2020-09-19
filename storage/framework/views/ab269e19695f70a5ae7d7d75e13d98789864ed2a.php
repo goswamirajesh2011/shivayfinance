@@ -1,1 +1,0 @@
-hello about<?php /**PATH E:\xampp\htdocs\shivayfinance\resources\views/front/page/about.blade.php ENDPATH**/ ?>

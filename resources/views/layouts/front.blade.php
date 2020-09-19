@@ -10,19 +10,19 @@
     <title>{{ config('app.name', 'Shivay Finance') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('public/js/app.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('public/css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('public/css/custom.css') }}" rel="stylesheet">
+    <link href="{{ asset('public/css/font-awesome.min.css') }}" rel="stylesheet">
 
-    <link rel="stylesheet" type="text/css" href="{{ asset('slick/slick.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('slick/slick-theme.css') }}">
+    <link href="{{ asset('public/slick/slick.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('public/slick/slick-theme.css') }}" rel="stylesheet" type="text/css">
 </head>
 <body>
     <div id="app">
@@ -33,8 +33,8 @@
         @include('layouts.common.front.footer')
     </div>
 
-    <script src="{{ asset('js/jquery-2.2.0.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('slick/slick.js') }}" type="text/javascript" charset="utf-8"></script>
+    <script src="{{ asset('public/js/jquery-2.2.0.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('public/slick/slick.js') }}" type="text/javascript" charset="utf-8"></script>
     @yield('js')
 </body>
 </html>

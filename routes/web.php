@@ -39,7 +39,9 @@ Route::group([
 		'as'=>'front.',
 	], function(){
 		Route::get('/', 'FrontController@index')->name('index');
-		Route::get('page/{name?}', 'PageController@show')->name('page');
+		Route::get('page/{slug?}', 'PageController@show')->name('page');
 		Route::get('applyloan/{loanid}', 'FrontController@applyloan')->name('applyloan');
 		Route::post('storeloan', 'FrontController@storeloan')->name('storeloan');
+		Route::get('contact', 'ContactController@contact')->name('contact');
+		Route::post('sentcontact', 'ContactController@sentcontact')->name('sentcontact');
 });

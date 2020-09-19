@@ -176,6 +176,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         //Rajesh\Slider\SliderServiceProvider::class,
+        Spatie\Permission\PermissionServiceProvider::class,
 
     ],
 

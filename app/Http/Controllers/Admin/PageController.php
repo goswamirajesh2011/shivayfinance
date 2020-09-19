@@ -49,6 +49,7 @@ class PageController extends Controller
             'name' => $request->name,
             'content' => $request->content,
             'slug' => $request->slug,
+            'excerpt' => $request->excerpt,
             'status' => 1
         ]);
         $page->save();
@@ -91,11 +92,12 @@ class PageController extends Controller
         $this->validate($request, [
             "name" => "required",
             "content" => "required",
-            'slug' => 'required|unique:pages',
+            //'slug' => 'required|unique:pages',
         ]);
         $page = Page::find($id);
         $page->name = $request->name;
         $page->content = $request->content;
+        $page->excerpt = $request->excerpt;
         $page->slug = $request->slug;
         $page->save();
         return redirect()->route('admin.page.index');

@@ -6,7 +6,7 @@
                 <section class="slider">
                     <?php $__currentLoopData = $slides; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $slide): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <div>
-                        <img src='<?php echo e(asset("storage/slider/$slide->slide")); ?>' class="img-responsive">
+                        <img src='<?php echo e(asset("public/storage/slider/$slide->slide")); ?>' class="img-responsive">
                     </div>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </section>
@@ -22,7 +22,7 @@
         <div class="row">
             <?php if( !empty($loans->toArray()) ): ?>
                 <?php $__currentLoopData = $loans; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $loan): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <div class="col-md-6 margin-b">
+                <div class="col-md-3 margin-b services-box">
                     <div class="card border-success">
                         <div class="card-header bg-success text-center rounded">
                             <h4 class="text-white"><?php echo e($loan->name); ?></h4>
@@ -32,7 +32,7 @@
                             <div class="accordion md-accordion accordion-1" id="loanAccordion<?php echo e($loan->id); ?>" role="tablist">
                                 <div class="card">
                                     <div class="card-header border-success" role="tab" id="loanDesc<?php echo e($loan->id); ?>">
-                                        <h5 class="text-uppercase mb-0 py-1">
+                                        <h5 class="text-uppercase mb-0">
                                             <a class="text-success font-weight-bold" data-toggle="collapse" href="#loanDescCollapse<?php echo e($loan->id); ?>" aria-expanded="true" aria-controls="loanDescCollapse<?php echo e($loan->id); ?>">
                                                 Description
                                             </a>
@@ -46,7 +46,7 @@
                                 </div>
                                 <div class="card">
                                     <div class="card-header border-success" role="tab" id="loanDocs<?php echo e($loan->id); ?>">
-                                        <h5 class="text-uppercase mb-0 py-1">
+                                        <h5 class="text-uppercase mb-0">
                                             <a class="collapsed font-weight-bold text-success" data-toggle="collapse" href="#loanDocsCollapse<?php echo e($loan->id); ?>" aria-expanded="false" aria-controls="loanDocsCollapse<?php echo e($loan->id); ?>">
                                                 Document Required
                                             </a>
@@ -64,7 +64,7 @@
                                 </div>
                                 <div class="card">
                                     <div class="card-header border-success" role="tab" id="loanFaq<?php echo e($loan->id); ?>">
-                                        <h5 class="text-uppercase mb-0 py-1">
+                                        <h5 class="text-uppercase mb-0">
                                             <a class="collapsed font-weight-bold text-success" data-toggle="collapse" href="#loanFaqCollapse<?php echo e($loan->id); ?>" aria-expanded="false" aria-controls="loanFaqCollapse<?php echo e($loan->id); ?>">FAQ</a>
                                         </h5>
                                     </div>

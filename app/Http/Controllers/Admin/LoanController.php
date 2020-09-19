@@ -47,6 +47,8 @@ class LoanController extends Controller
         $loan = Loan::create([
             'name' => $request->name,
             'description' => $request->description,
+            'doc_req' => $request->doc_req,
+            'faq' => $request->faq,
             'status' => 1
         ]);
         $loan->save();
@@ -93,6 +95,8 @@ class LoanController extends Controller
         $loan = Loan::find($id);
         $loan->name = $request->name;
         $loan->description = $request->description;
+        $loan->doc_req = $request->doc_req;
+        $loan->faq = $request->faq;
         $loan->save();
         return redirect()->route('admin.loan.index');
     }

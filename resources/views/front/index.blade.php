@@ -8,7 +8,7 @@
                 <section class="slider">
                     @foreach($slides as $slide)
                     <div>
-                        <img src='{{ asset("storage/slider/$slide->slide") }}' class="img-responsive">
+                        <img src='{{ asset("public/storage/slider/$slide->slide") }}' class="img-responsive">
                     </div>
                     @endforeach
                 </section>
@@ -24,7 +24,7 @@
         <div class="row">
             @if( !empty($loans->toArray()) )
                 @foreach($loans as $loan)
-                <div class="col-md-6 margin-b">
+                <div class="col-md-3 margin-b services-box">
                     <div class="card border-success">
                         <div class="card-header bg-success text-center rounded">
                             <h4 class="text-white">{{ $loan->name }}</h4>
@@ -34,7 +34,7 @@
                             <div class="accordion md-accordion accordion-1" id="loanAccordion{{ $loan->id }}" role="tablist">
                                 <div class="card">
                                     <div class="card-header border-success" role="tab" id="loanDesc{{ $loan->id }}">
-                                        <h5 class="text-uppercase mb-0 py-1">
+                                        <h5 class="text-uppercase mb-0">
                                             <a class="text-success font-weight-bold" data-toggle="collapse" href="#loanDescCollapse{{ $loan->id }}" aria-expanded="true" aria-controls="loanDescCollapse{{ $loan->id }}">
                                                 Description
                                             </a>
@@ -48,7 +48,7 @@
                                 </div>
                                 <div class="card">
                                     <div class="card-header border-success" role="tab" id="loanDocs{{ $loan->id }}">
-                                        <h5 class="text-uppercase mb-0 py-1">
+                                        <h5 class="text-uppercase mb-0">
                                             <a class="collapsed font-weight-bold text-success" data-toggle="collapse" href="#loanDocsCollapse{{ $loan->id }}" aria-expanded="false" aria-controls="loanDocsCollapse{{ $loan->id }}">
                                                 Document Required
                                             </a>
@@ -66,7 +66,7 @@
                                 </div>
                                 <div class="card">
                                     <div class="card-header border-success" role="tab" id="loanFaq{{ $loan->id }}">
-                                        <h5 class="text-uppercase mb-0 py-1">
+                                        <h5 class="text-uppercase mb-0">
                                             <a class="collapsed font-weight-bold text-success" data-toggle="collapse" href="#loanFaqCollapse{{ $loan->id }}" aria-expanded="false" aria-controls="loanFaqCollapse{{ $loan->id }}">FAQ</a>
                                         </h5>
                                     </div>

@@ -32,7 +32,11 @@
 								</div>
 								<div class="form-group">
 									<label for="content">Content</label>
-									<textarea class="form-control" id="content" name="content" required="">{{$page->content}}</textarea>
+									<textarea class="form-control contentEditor" id="content" name="content" required="">{{$page->content}}</textarea>
+								</div>
+								<div class="form-group">
+									<label for="excerpt">Excerpt</label>
+									<input type="text" class="form-control" id="excerpt" name="excerpt" placeholder="Enter short desc" value="{{$page->excerpt}}">
 								</div>
 								<div class="form-group">
 									<input type="hidden" class="form-control" id="slug" name="slug" value="{{$page->slug}}">
@@ -51,4 +55,44 @@
 		</div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
+@endsection
+
+@section('js')
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#name').on('focusout', function(){
+			let count = 0;
+			let pageName = $(this).val();
+			if( pageName != ''){
+				let pageSlug = pageName.split(' ').join('-').toLowerCase();
+				checkSlug(pageSlug, count);
+			}
+		});
+
+		$('.contentEditor').summernote();
+		
+		function checkSlug(slug, count){
+			$.ajax({
+				type:'POST',
+				url:"{{ route('admin.page.slugExist') }}/"+slug,
+				data:{
+					_token: '{{ csrf_token() }}',
+					'slug':slug,
+				},
+				dataType: 'json',
+				success: function(data){
+					if(data.exist){
+						count=count+1;
+						slug = slug+"-"+count;
+						checkSlug(slug, count);
+					}else{
+						$("#slug").val(slug);
+					}
+				},
+				error: function(xhr, err, z){}
+			});
+		}
+
+	});
+</script>
 @endsection

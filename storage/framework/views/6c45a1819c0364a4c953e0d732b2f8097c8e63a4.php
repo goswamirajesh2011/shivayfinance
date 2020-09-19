@@ -6,7 +6,11 @@
                 <div class="card-header"><?php echo e(__('Register')); ?></div>
 
                 <div class="card-body">
-                    <form method="POST" action="<?php echo e(route('register')); ?>">
+                    <?php if(isset($url)): ?>
+                    <form method="POST" action='<?php echo e(url("register/$url")); ?>' aria-label="<?php echo e(__('Register')); ?>">
+                    <?php else: ?>
+                    <form method="POST" action="<?php echo e(route('register')); ?>" aria-label="<?php echo e(__('Register')); ?>">
+                    <?php endif; ?>
                         <?php echo csrf_field(); ?>
 
                         <div class="form-group row">

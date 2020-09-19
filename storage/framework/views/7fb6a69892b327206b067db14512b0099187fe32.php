@@ -59,7 +59,10 @@
                     </div>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link text-white" href="<?php echo e(route('front.page', 'about')); ?>">About us</a>
+                    <a class="nav-link text-white" href="<?php echo e(route('front.page', 'about-us')); ?>">About Us</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link text-white" href="<?php echo e(route('front.page', 'contact-us')); ?>">Contact Us</a>
                   </li>
             </ul>
 

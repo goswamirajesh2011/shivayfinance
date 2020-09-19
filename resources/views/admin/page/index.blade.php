@@ -20,7 +20,7 @@
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Name</th>
-                            <th scope="col">Content</th>
+                            <th scope="col">Excerpt</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
@@ -30,12 +30,12 @@
                             <tr>
                                 <th scope="row">{{ $page->id }}</th>
                                 <td>{{ $page->name }}</td>
-                                <td>{{ substr($page->content, 0, 100) }}...</td>
+                                <td>{{ substr($page->excerpt, 0, 100) }}...</td>
                                 <td>
-                                    <a href="{{ route('admin.page.edit', $page->id) }}" title="Edit Page">
+                                    <a href="{{ route('admin.page.edit', $page->id) }}" title="Edit Page" class="text-success">
                                         <i class="fa fa-edit" aria-hidden="true"></i>
                                     </a>
-                                    <a href="javascript:void(0)" title="Delete Page" data-page_del_url="{{ route('admin.page.destroy', $page->id) }}" class="deletePage">
+                                    <a href="javascript:void(0)" title="Delete Page" data-page_del_url="{{ route('admin.page.destroy', $page->id) }}" class="deletePage text-danger">
                                         <i class="fa fa-trash" aria-hidden="true"></i>
                                     </a>
                                 </td>
@@ -56,7 +56,7 @@
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Name</th>
-                            <th scope="col">Content</th>
+                            <th scope="col">Excerpt</th>
                             <th scope="col">Action</th>
                         </tr>
                     </tfoot>

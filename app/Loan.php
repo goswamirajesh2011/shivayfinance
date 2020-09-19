@@ -12,6 +12,6 @@ class Loan extends Model
      * @var array
      */
     protected $fillable = [
-    	'name', 'description', 'status'
+    	'name', 'description', 'doc_req', 'faq', 'status'
     ];
 }

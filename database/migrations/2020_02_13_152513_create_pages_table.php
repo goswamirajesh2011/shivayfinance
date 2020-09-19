@@ -17,6 +17,7 @@ class CreatePagesTable extends Migration
             $table->bigIncrements('id');
             $table->string("name");
             $table->string("slug")->unique();
+            $table->string("excerpt")->nullable();
             $table->longText("content");
             $table->integer("status");
             $table->timestamps();

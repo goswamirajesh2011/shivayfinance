@@ -10,19 +10,19 @@
     <title><?php echo e(config('app.name', 'Shivay Finance')); ?></title>
 
     <!-- Scripts -->
-    <script src="<?php echo e(asset('js/app.js')); ?>" defer></script>
+    <script src="<?php echo e(asset('public/js/app.js')); ?>" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="<?php echo e(asset('css/app.css')); ?>" rel="stylesheet">
-    <link href="<?php echo e(asset('css/custom.css')); ?>" rel="stylesheet">
-    <link href="<?php echo e(asset('css/font-awesome.min.css')); ?>" rel="stylesheet">
+    <link href="<?php echo e(asset('public/css/app.css')); ?>" rel="stylesheet">
+    <link href="<?php echo e(asset('public/css/custom.css')); ?>" rel="stylesheet">
+    <link href="<?php echo e(asset('public/css/font-awesome.min.css')); ?>" rel="stylesheet">
 
-    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('slick/slick.css')); ?>">
-    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('slick/slick-theme.css')); ?>">
+    <link href="<?php echo e(asset('public/slick/slick.css')); ?>" rel="stylesheet" type="text/css">
+    <link href="<?php echo e(asset('public/slick/slick-theme.css')); ?>" rel="stylesheet" type="text/css">
 </head>
 <body>
     <div id="app">
@@ -33,8 +33,8 @@
         <?php echo $__env->make('layouts.common.front.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     </div>
 
-    <script src="<?php echo e(asset('js/jquery-2.2.0.min.js')); ?>" type="text/javascript"></script>
-    <script src="<?php echo e(asset('slick/slick.js')); ?>" type="text/javascript" charset="utf-8"></script>
+    <script src="<?php echo e(asset('public/js/jquery-2.2.0.min.js')); ?>" type="text/javascript"></script>
+    <script src="<?php echo e(asset('public/slick/slick.js')); ?>" type="text/javascript" charset="utf-8"></script>
     <?php echo $__env->yieldContent('js'); ?>
 </body>
 </html>

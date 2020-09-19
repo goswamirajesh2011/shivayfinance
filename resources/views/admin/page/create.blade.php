@@ -31,7 +31,11 @@
 								</div>
 								<div class="form-group">
 									<label for="content">Content</label>
-									<textarea class="form-control" name="content" id="content"></textarea>
+									<textarea class="form-control textEditor" name="content" id="content"></textarea>
+								</div>
+								<div class="form-group">
+									<label for="excerpt">Excerpt</label>
+									<input type="text" class="form-control" id="excerpt" name="excerpt" placeholder="Enter short description">
 								</div>
 								<div class="form-group">
 									<input type="hidden" class="form-control" id="slug" name="slug" value="">
@@ -64,7 +68,6 @@
 			}
 		});
 
-		
 		function checkSlug(slug, count){
 			$.ajax({
 				type:'POST',
@@ -86,6 +89,9 @@
 				error: function(xhr, err, z){}
 			});
 		}
+
+		$('.textEditor').summernote();
+
 	});
 </script>
 @endsection
