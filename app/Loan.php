@@ -12,6 +12,23 @@ class Loan extends Model
      * @var array
      */
     protected $fillable = [
-    	'name', 'description', 'doc_req', 'faq', 'status'
+    	'name', 'description', 'doc_req', 'faq', 'icon', 'status'
     ];
+
+    public $timestamps = true;
+
+    /**
+     * loan has one slider
+    */
+    public function loan(){
+        return $this->hasOne('App\Slider');
+    }
+
+    /**
+     * loan has many user request
+    */
+    public function user_request(){
+        return $this->hasMany('App\LoanRequest');
+    }
+
 }

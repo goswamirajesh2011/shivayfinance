@@ -14,4 +14,7 @@ class Partner extends Model
     protected $fillable = [
     	'name', 'caption', 'logo', 'status'
     ];
+
+    public $timestamps = true;
+
 }

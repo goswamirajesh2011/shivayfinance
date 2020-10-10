@@ -18,7 +18,8 @@ class CreateSlidersTable extends Migration
             $table->string('name');
             $table->string('caption');
             $table->string('slide');
-            $table->integer('status');
+            $table->integer('loan_id')->nullable();
+            $table->integer('status')->default(1);
             $table->timestamps();
         });
     }

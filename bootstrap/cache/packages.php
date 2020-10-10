@@ -52,4 +52,15 @@
       0 => 'Spatie\\Permission\\PermissionServiceProvider',
     ),
   ),
+  'unisharp/laravel-settings' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Unisharp\\Setting\\SettingServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'Setting' => 'Unisharp\\Setting\\SettingFacade',
+    ),
+  ),
 );

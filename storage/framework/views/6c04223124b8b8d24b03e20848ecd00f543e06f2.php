@@ -23,6 +23,7 @@
 
     <link href="<?php echo e(asset('public/slick/slick.css')); ?>" rel="stylesheet" type="text/css">
     <link href="<?php echo e(asset('public/slick/slick-theme.css')); ?>" rel="stylesheet" type="text/css">
+    <?php echo $__env->yieldContent('style'); ?>
 </head>
 <body>
     <div id="app">

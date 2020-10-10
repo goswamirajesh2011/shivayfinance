@@ -23,6 +23,7 @@
 
     <link href="{{ asset('public/slick/slick.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('public/slick/slick-theme.css') }}" rel="stylesheet" type="text/css">
+    @yield('style')
 </head>
 <body>
     <div id="app">

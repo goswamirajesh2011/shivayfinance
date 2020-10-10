@@ -15,9 +15,10 @@ class LoanController extends Controller
      */
     public function index()
     {
+        $title = "Loans";
         $loans = Loan::paginate(10);
         //dd($loans->toArray());
-        return view('admin.loan.index', compact('loans'));
+        return view('admin.loan.index', compact('loans', 'title'));
     }
 
     /**
@@ -27,7 +28,8 @@ class LoanController extends Controller
      */
     public function create()
     {
-        return view('admin.loan.create');
+        $title = "Loan Create";
+        return view('admin.loan.create', compact('title'));
     }
 
     /**
@@ -49,7 +51,8 @@ class LoanController extends Controller
             'description' => $request->description,
             'doc_req' => $request->doc_req,
             'faq' => $request->faq,
-            'status' => 1
+            'status' => 1,
+            'icon' => $request->icon
         ]);
         $loan->save();
         return redirect()->route('admin.loan.index');
@@ -63,7 +66,8 @@ class LoanController extends Controller
      */
     public function show($id)
     {
-        return view('admin.loan.show');
+        $title = "Loan";
+        return view('admin.loan.show', compact('title'));
     }
 
     /**
@@ -74,9 +78,10 @@ class LoanController extends Controller
      */
     public function edit($id)
     {
+        $title = "Loan Edit";
         $loan = Loan::find($id);
         //dd($loan->toArray());
-        return view('admin.loan.edit', compact('loan'));
+        return view('admin.loan.edit', compact('loan', 'title'));
     }
 
     /**
@@ -97,6 +102,7 @@ class LoanController extends Controller
         $loan->description = $request->description;
         $loan->doc_req = $request->doc_req;
         $loan->faq = $request->faq;
+        $loan->icon = $request->icon;
         $loan->save();
         return redirect()->route('admin.loan.index');
     }

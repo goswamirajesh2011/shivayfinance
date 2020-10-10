@@ -41,6 +41,10 @@ class ComposerStaticInit76d3c781f030af6511c91652d7b23ea1
             'Whoops\\' => 7,
             'Webmozart\\Assert\\' => 17,
         ),
+        'U' => 
+        array (
+            'Unisharp\\Setting\\' => 17,
+        ),
         'T' => 
         array (
             'TijsVerkoyen\\CssToInlineStyles\\' => 31,
@@ -164,6 +168,10 @@ class ComposerStaticInit76d3c781f030af6511c91652d7b23ea1
         'Webmozart\\Assert\\' => 
         array (
             0 => __DIR__ . '/..' . '/webmozart/assert/src',
+        ),
+        'Unisharp\\Setting\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/unisharp/laravel-settings/src/Setting',
         ),
         'TijsVerkoyen\\CssToInlineStyles\\' => 
         array (
@@ -421,6 +429,7 @@ class ComposerStaticInit76d3c781f030af6511c91652d7b23ea1
     );
 
     public static $classMap = array (
+        'App\\Admin' => __DIR__ . '/../..' . '/app/Admin.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Contact' => __DIR__ . '/../..' . '/app/Contact.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
@@ -495,6 +504,7 @@ class ComposerStaticInit76d3c781f030af6511c91652d7b23ea1
         'Carbon\\Traits\\Units' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Traits/Units.php',
         'Carbon\\Traits\\Week' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Traits/Week.php',
         'Carbon\\Translator' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Translator.php',
+        'CreateSettingsTable' => __DIR__ . '/..' . '/unisharp/laravel-settings/database/migrations/2015_08_06_184708_create_settings_table.php',
         'Cron\\AbstractField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/AbstractField.php',
         'Cron\\CronExpression' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/CronExpression.php',
         'Cron\\DayOfMonthField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/DayOfMonthField.php',
@@ -4391,6 +4401,11 @@ class ComposerStaticInit76d3c781f030af6511c91652d7b23ea1
         'TijsVerkoyen\\CssToInlineStyles\\Css\\Property\\Property' => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src/Css/Property/Property.php',
         'TijsVerkoyen\\CssToInlineStyles\\Css\\Rule\\Processor' => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src/Css/Rule/Processor.php',
         'TijsVerkoyen\\CssToInlineStyles\\Css\\Rule\\Rule' => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src/Css/Rule/Rule.php',
+        'Unisharp\\Setting\\EloquentStorage' => __DIR__ . '/..' . '/unisharp/laravel-settings/src/Setting/EloquentStorage.php',
+        'Unisharp\\Setting\\Setting' => __DIR__ . '/..' . '/unisharp/laravel-settings/src/Setting/Setting.php',
+        'Unisharp\\Setting\\SettingFacade' => __DIR__ . '/..' . '/unisharp/laravel-settings/src/Setting/SettingFacade.php',
+        'Unisharp\\Setting\\SettingServiceProvider' => __DIR__ . '/..' . '/unisharp/laravel-settings/src/Setting/SettingServiceProvider.php',
+        'Unisharp\\Setting\\SettingStorageContract' => __DIR__ . '/..' . '/unisharp/laravel-settings/src/Setting/SettingStorageContract.php',
         'UsersTableSeeder' => __DIR__ . '/../..' . '/database/seeds/UsersTableSeeder.php',
         'Webmozart\\Assert\\Assert' => __DIR__ . '/..' . '/webmozart/assert/src/Assert.php',
         'Whoops\\Exception\\ErrorException' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Exception/ErrorException.php',

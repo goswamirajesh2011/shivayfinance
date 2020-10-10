@@ -5,10 +5,23 @@
         <div class="row">
             <div class="col-md-12 p-0">
                 @if(!empty($slides->toArray()))
-                <section class="slider">
+                <section class="front-slider">
                     @foreach($slides as $slide)
                     <div>
                         <img src='{{ asset("public/storage/slider/$slide->slide") }}' class="img-responsive">
+                        <div class="slide-content">
+                            <h4>{{ $slide->loan->name }}</h4>
+                            <p>{{ strip_tags($slide->loan->description) }}</p>
+                            <p><a href="{{ route('front.applyloan', $slide->loan->id) }}" class="btn btn-success">Apply Now</a></p>
+                        </div>
+                    </div>
+                    @endforeach
+                </section>
+                <section class="slider-nav">
+                    @foreach($slides as $slide)
+                    <div>
+                        <i class="fa {{ $slide->loan->icon }}"></i>
+                        <p>{{ $slide->loan->name }}</p>
                     </div>
                     @endforeach
                 </section>
@@ -19,80 +32,38 @@
         </div>
     </div>
 
-    <div class="container">
+    <div class="container-fluid">
         <h1 class="text-center text-success">Our Services</h1>
         <div class="row">
-            @if( !empty($loans->toArray()) )
-                @foreach($loans as $loan)
-                <div class="col-md-3 margin-b services-box">
-                    <div class="card border-success">
-                        <div class="card-header bg-success text-center rounded">
-                            <h4 class="text-white">{{ $loan->name }}</h4>
+            <div class="col-md-12 no-padding">
+                @if( !empty($loans->toArray()) )
+                    <ul class="nav nav-tabs" id="serviceTab" role="tablist">
+                        @php $count = 0; @endphp
+                        @foreach($loans as $loan)
+                        <li class="nav-item">
+                            <a class="nav-link @if($count++ == 0) active @endif" id="loan-{{$loan->id}}-tab" data-toggle="tab" href="#loan-{{$loan->id}}" role="tab" aria-controls="loan-{{$loan->id}}" aria-selected="true">{{$loan->name}}</a>
+                        </li>
+                        @endforeach
+                    </ul>
+                    <div class="tab-content" id="serviceTabContent">
+                        @php $count = 0; @endphp
+                        @foreach($loans as $loan)
+                        <div class="tab-pane @if($count++ == 0) fade show active @endif" id="loan-{{$loan->id}}" role="tabpanel" aria-labelledby="loan-{{$loan->id}}-tab">
+                            <p>{{strip_tags($loan->description)}}</p>
+                            <p class="text-center"><a href="{{ route('front.applyloan', $loan->id) }}" class="btn btn-success">Apply Now</a></p>
                         </div>
-                        <div class="card-body text-justify">
-                            <!--Accordion wrapper-->
-                            <div class="accordion md-accordion accordion-1" id="loanAccordion{{ $loan->id }}" role="tablist">
-                                <div class="card">
-                                    <div class="card-header border-success" role="tab" id="loanDesc{{ $loan->id }}">
-                                        <h5 class="text-uppercase mb-0">
-                                            <a class="text-success font-weight-bold" data-toggle="collapse" href="#loanDescCollapse{{ $loan->id }}" aria-expanded="true" aria-controls="loanDescCollapse{{ $loan->id }}">
-                                                Description
-                                            </a>
-                                        </h5>
-                                    </div>
-                                    <div id="loanDescCollapse{{ $loan->id }}" class="collapse show" role="tabpanel" aria-labelledby="loanDesc{{ $loan->id }}" data-parent="#loanAccordion{{ $loan->id }}">
-                                        <div class="card-body">
-                                            <p class="">{{$loan->description}}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card">
-                                    <div class="card-header border-success" role="tab" id="loanDocs{{ $loan->id }}">
-                                        <h5 class="text-uppercase mb-0">
-                                            <a class="collapsed font-weight-bold text-success" data-toggle="collapse" href="#loanDocsCollapse{{ $loan->id }}" aria-expanded="false" aria-controls="loanDocsCollapse{{ $loan->id }}">
-                                                Document Required
-                                            </a>
-                                        </h5>
-                                    </div>
-                                    <div id="loanDocsCollapse{{ $loan->id }}" class="collapse" role="tabpanel" aria-labelledby="loanDocs{{ $loan->id }}" data-parent="#loanAccordion{{ $loan->id }}">
-                                        <div class="card-body">
-                                            <ul>
-                                                <li>doc one</li>
-                                                <li>doc two</li>
-                                                <li>doc three</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card">
-                                    <div class="card-header border-success" role="tab" id="loanFaq{{ $loan->id }}">
-                                        <h5 class="text-uppercase mb-0">
-                                            <a class="collapsed font-weight-bold text-success" data-toggle="collapse" href="#loanFaqCollapse{{ $loan->id }}" aria-expanded="false" aria-controls="loanFaqCollapse{{ $loan->id }}">FAQ</a>
-                                        </h5>
-                                    </div>
-                                    <div id="loanFaqCollapse{{ $loan->id }}" class="collapse" role="tabpanel" aria-labelledby="loanFaq{{ $loan->id }}" data-parent="#loanAccordion{{ $loan->id }}">
-                                        <div class="card-body">
-                                            <p class="">Frequently Asked questions</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--Accordion wrapper-->
-                        </div>
-                        <div class="card-footer text-center">
-                            <a href="{{ route('front.applyloan', $loan->id) }}" class="btn btn-success">Apply Now</a>
-                        </div>
+                        @endforeach
                     </div>
-                </div>
-                @endforeach
-            @else
-                <div class="col-md-12">
-                    <div class="alert alert-danger text-center">Loans not found!! Add from dashboard</div>
-                </div>
-            @endif
+                @else
+                    <div class="col-md-12">
+                        <div class="alert alert-danger text-center">Loans not found!! Add from dashboard</div>
+                    </div>
+                @endif
+            </div>
         </div>
-        <hr class="border-success">
+    </div>
 
+    <div class="container">
         <div class="row">
             <div class="col-md-6">
                 <h1 class="text-center text-success">How It Works ?</h1>
@@ -121,7 +92,7 @@
         <div class="partners">
         @foreach($partners as $partner)
         <div>
-            <img class="" title="{{ $partner->caption }}" src='{{ asset("storage/partner/$partner->logo") }}' class="img-responsive">
+            <img class="" title="{{ $partner->caption }}" src='{{ asset("public/storage/partner/$partner->logo") }}' class="img-responsive">
         </div>
         @endforeach
         </div>
@@ -138,15 +109,56 @@
     @endif
 @endsection
 
+@section('style')
+<style>
+.front-slider .slick-slide{
+    position: relative;
+}
+.front-slider .slick-slide div.slide-content{
+    position: absolute;
+    top: 25%;
+    left: 10%;
+    z-index: 9;
+    width: 40%;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 5px;
+}
+.slider-nav .slick-list{
+    text-align: center;
+}
+.slider-nav .slick-current{
+    background-color: #38c172;
+    color: #fff;
+    border-top: 2px solid #38c172;
+    padding: 10px;
+}
+.slider-nav .slick-slide{
+    border-top: 2px solid #38c172;
+}
+</style>
+@endsection
+
 @section('js')
     <script type="text/javascript">
-        $(".slider").slick({
-            dots: true,
-            infinite: true,
+        $(".front-slider").slick({
+            //dots: true,
+            //infinite: true,
             slidesToShow: 1,
             slidesToScroll: 1,
+            //autoplay: true,
+            //autoplaySpeed: 2000,
+            asNavFor: '.slider-nav'
+        });
+        $(".slider-nav").slick({
+            dots: true,
+            slidesToShow: 4,
+            slidesToScroll: 1,
+            asNavFor: '.front-slider',
+            centerMode: true,
+            focusOnSelect: true,
             autoplay: true,
-            autoplaySpeed: 2000,
+            //autoplaySpeed: 2000,
         });
         
         $('.partners').slick({

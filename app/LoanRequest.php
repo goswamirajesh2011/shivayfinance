@@ -12,6 +12,16 @@ class LoanRequest extends Model
      * @var array
      */
     protected $fillable = [
-    	'loantype_id', 'amount', 'purpose', 'business_name', 'business_age', 'state', 'city', 'email', 'phone', 'status'
+    	'loan_id', 'amount', 'purpose', 'business_name', 'business_age', 'state', 'city', 'email', 'phone', 'status'
     ];
+
+    public $timestamps = true;
+
+    /**
+     * request belongs to loan
+    */
+    public function loan(){
+        return $this->belongsTo('App\Loan');
+    }
+
 }

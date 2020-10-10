@@ -14,4 +14,7 @@ class Page extends Model
     protected $fillable = [
     	'name', 'slug', 'content', 'excerpt', 'status'
     ];
+
+    public $timestamps = true;
+
 }

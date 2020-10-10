@@ -42,11 +42,20 @@
 									<label for="faq">FAQ (Frequently Asked Question)</label>
 									<textarea class="form-control faq" name="faq" id="faq">{{$loan->faq}}</textarea>
 								</div>
+								<div class="form-group">
+									<label for="icon">Icon</label>
+									<select class="form-control" id="icon" name="icon">
+										@foreach(config('fa-icon') as $indx => $icon)
+										<option value="{{$indx}}" @if($loan->icon == $icon) selected @endif>{{$icon}} </option>
+										@endforeach
+									</select>
+								</div>
 							</div>
 			                <!-- /.card-body -->
 
 			                <div class="card-footer">
 			                  <button type="submit" class="btn btn-primary">Update</button>
+							  <a href="{{route('admin.loan.index')}}" class="btn btn-danger">Cancel</a>
 			                </div>
 		              	</form>
 		            </div>
@@ -58,6 +67,11 @@
     <!-- /.content -->
 @endsection
 
+@section('style')
+select {
+  font-family: 'FontAwesome'
+}
+@endsection
 @section('js')
 <script type="text/javascript">
 	$(document).ready(function(){

@@ -20,11 +20,20 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+/* Routes for admin*/
 Route::group([
-		'namespace'=>'Admin',
-		'prefix' => 'admin', //It is added in url
-		'as' => 'admin.', //It is added in route
-		'middleware' => ['auth']
+	'namespace' => 'Admin',
+	'prefix' => 'admin',
+	'as' => 'admin.'
+], function(){
+	Route::get('login', 'AdminController@login')->name('login');
+	Route::post('auth', 'AdminController@adminAuth')->name('auth');
+	//Route::get('register', 'AdminController@register')->name('register');
+	Route::post('store', 'AdminController@store')->name('store');
+	Route::post('logout', 'AdminController@logout')->name('logout');
+	/* Routes for authenticated admin*/
+	Route::group([
+		'middleware' => ['auth:admin']
 	], function(){
 		Route::get('dashboard', 'AdminController@dashboard')->name('dashboard');
 		Route::resource('slider', 'SliderController');
@@ -32,6 +41,11 @@ Route::group([
 		Route::resource('partner', 'PartnerController');
 		Route::resource('page', 'PageController');
 		Route::post('page/slugExist/{slug?}', 'PageController@slugExist')->name('page.slugExist');
+		Route::get('settings', 'AdminController@settings')->name('settings');
+		Route::get('settings/edit', 'AdminController@settings_edit')->name('settings.edit');
+		Route::put('settings/store', 'AdminController@settings_store')->name('settings.store');
+		Route::get('user/loan/requests', 'AdminController@user_loan_requests')->name('user.loan.requests');
+	});
 });
 
 Route::group([

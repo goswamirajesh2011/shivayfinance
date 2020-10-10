@@ -32,6 +32,7 @@
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
         <!-- Scripts -->
         <!-- <script src="{{ asset('js/app.js') }}" defer></script> -->
+        @yield('style')
     </head>
     <body class="hold-transition sidebar-mini layout-fixed">
         <div class="wrapper">
@@ -50,7 +51,7 @@
                 <!-- Right navbar links -->
                 <ul class="navbar-nav ml-auto">
                     <!-- Notifications Dropdown Menu -->
-                    <li class="nav-item dropdown">
+                    <!-- <li class="nav-item dropdown">
                         <a class="nav-link" data-toggle="dropdown" href="#">
                             <i class="far fa-bell"></i>
                             <span class="badge badge-warning navbar-badge">15</span>
@@ -75,7 +76,7 @@
                             <div class="dropdown-divider"></div>
                             <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
                         </div>
-                    </li>
+                    </li> -->
                 </ul>
             </nav>
             <!-- /.navbar -->
@@ -97,7 +98,7 @@
                             <img src="{{ asset('public/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
                         </div>
                         <div class="info">
-                            <a href="#" class="d-block">Manoj</a>
+                            <a href="#" class="d-block">{{Auth::user()->name}}</a>
                         </div>
                     </div>
 
@@ -121,20 +122,17 @@
                             <li class="nav-item has-treeview">
                                 <a href="#" class="nav-link">
                                   <i class="nav-icon fas fa-image"></i>
-                                  <p>
-                                    Slider
-                                    <i class="right fas fa-angle-left"></i>
-                                  </p>
+                                  <p> Slider <i class="right fas fa-angle-left"></i></p>
                                 </a>
                                 <ul class="nav nav-treeview">
                                   <li class="nav-item">
-                                    <a href="{{ route('admin.slider.index') }}" class="nav-link active">
+                                    <a href="{{ route('admin.slider.index') }}" class="nav-link">
                                       <i class="far fa fa-list nav-icon"></i>
                                       <p>All</p>
                                     </a>
                                   </li>
                                   <li class="nav-item">
-                                    <a href="{{ route('admin.slider.create') }}" class="nav-link active">
+                                    <a href="{{ route('admin.slider.create') }}" class="nav-link">
                                       <i class="far fa fa-plus nav-icon"></i>
                                       <p>Add New</p>
                                     </a>
@@ -144,22 +142,25 @@
                             <li class="nav-item has-treeview">
                                 <a href="#" class="nav-link">
                                   <i class="nav-icon fas fa-credit-card"></i>
-                                  <p>
-                                    Loan
-                                    <i class="right fas fa-angle-left"></i>
-                                  </p>
+                                  <p> Loan <i class="right fas fa-angle-left"></i></p>
                                 </a>
                                 <ul class="nav nav-treeview">
                                   <li class="nav-item">
-                                    <a href="{{ route('admin.loan.index') }}" class="nav-link active">
+                                    <a href="{{ route('admin.loan.index') }}" class="nav-link">
                                       <i class="far fa fa-list nav-icon"></i>
                                       <p>All</p>
                                     </a>
                                   </li>
                                   <li class="nav-item">
-                                    <a href="{{ route('admin.loan.create') }}" class="nav-link active">
+                                    <a href="{{ route('admin.loan.create') }}" class="nav-link">
                                       <i class="far fa fa-plus nav-icon"></i>
                                       <p>Add New</p>
+                                    </a>
+                                  </li>
+                                  <li class="nav-item">
+                                    <a href="{{ route('admin.user.loan.requests') }}" class="nav-link">
+                                      <i class="far fa fa-info nav-icon"></i>
+                                      <p>User Loan Request</p>
                                     </a>
                                   </li>
                                 </ul>
@@ -167,20 +168,17 @@
                             <li class="nav-item has-treeview">
                                 <a href="#" class="nav-link">
                                   <i class="nav-icon fas fa-image"></i>
-                                  <p>
-                                    Partner
-                                    <i class="right fas fa-angle-left"></i>
-                                  </p>
+                                  <p> Partner <i class="right fas fa-angle-left"></i></p>
                                 </a>
                                 <ul class="nav nav-treeview">
                                   <li class="nav-item">
-                                    <a href="{{ route('admin.partner.index') }}" class="nav-link active">
+                                    <a href="{{ route('admin.partner.index') }}" class="nav-link">
                                       <i class="far fa fa-list nav-icon"></i>
                                       <p>All</p>
                                     </a>
                                   </li>
                                   <li class="nav-item">
-                                    <a href="{{ route('admin.partner.create') }}" class="nav-link active">
+                                    <a href="{{ route('admin.partner.create') }}" class="nav-link">
                                       <i class="far fa fa-plus nav-icon"></i>
                                       <p>Add New</p>
                                     </a>
@@ -190,26 +188,37 @@
                             <li class="nav-item has-treeview">
                                 <a href="#" class="nav-link">
                                   <i class="nav-icon fa fa-file"></i>
-                                  <p>
-                                    Pages
-                                    <i class="right fas fa-angle-left"></i>
-                                  </p>
+                                  <p> Pages <i class="right fas fa-angle-left"></i></p>
                                 </a>
                                 <ul class="nav nav-treeview">
                                   <li class="nav-item">
-                                    <a href="{{ route('admin.page.index') }}" class="nav-link active">
+                                    <a href="{{ route('admin.page.index') }}" class="nav-link">
                                       <i class="far fa fa-list nav-icon"></i>
                                       <p>All</p>
                                     </a>
                                   </li>
                                   <li class="nav-item">
-                                    <a href="{{ route('admin.page.create') }}" class="nav-link active">
+                                    <a href="{{ route('admin.page.create') }}" class="nav-link">
                                       <i class="far fa fa-plus nav-icon"></i>
                                       <p>Add New</p>
                                     </a>
                                   </li>
                                 </ul>
                             </li>
+                            <li class="nav-item">
+                                <a href="{{ route('admin.settings') }}" class="nav-link">
+                                  <i class="fa fa-wrench nav-icon"></i>
+                                  <p>Settings</p>
+                                </a>
+                            </li>
+							<li class="nav-item">
+								<a href="{{ route('admin.logout') }}" class="nav-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+								<i class="far fa fa-power-off nav-icon"></i> {{ __('Logout') }}
+								</a>
+								<form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
+									@csrf
+								</form>
+							</li>
                         </ul>
                     </nav>
                     <!-- /.sidebar-menu -->
@@ -224,12 +233,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Dashboard</h1>
+            <h1 class="m-0 text-dark">{{$title}}</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Dashboard v1</li>
+              <li class="breadcrumb-item active">{{$title}}</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->

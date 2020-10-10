@@ -15,9 +15,10 @@ class PageController extends Controller
      */
     public function index()
     {
+        $title = "Pages";
         $pages = Page::paginate(10);
         //dd($loans->toArray());
-        return view('admin.page.index', compact('pages'));
+        return view('admin.page.index', compact('pages', 'title'));
     }
 
     /**
@@ -27,7 +28,8 @@ class PageController extends Controller
      */
     public function create()
     {
-        return view('admin.page.create');
+        $title = "Page Create";
+        return view('admin.page.create', compact('title'));
     }
 
     /**
@@ -64,7 +66,8 @@ class PageController extends Controller
      */
     public function show($id)
     {
-        return view('admin.page.show');
+        $title = "Page";
+        return view('admin.page.show', compact('title'));
     }
 
     /**
@@ -75,9 +78,10 @@ class PageController extends Controller
      */
     public function edit($id)
     {
+        $title = "Page Edit";
         $page = Page::find($id);
         //dd($page->toArray());
-        return view('admin.page.edit', compact('page'));
+        return view('admin.page.edit', compact('page', 'title'));
     }
 
     /**

@@ -32,8 +32,7 @@
 <nav class="navbar navbar-expand-md sticky-top navbar-dark bg-success shadow-sm main-menu">
     <div class="container">
         <a class="navbar-brand" href="<?php echo e(url('/')); ?>">
-            <?php echo e(config('app.name', 'Shivay Finance')); ?>
-
+            <img src="<?php echo e(asset('public/storage/uploads/').'/'.Setting::get('logo')); ?>" width="50" title="<?php echo e(config('app.name', 'Shivay Finance')); ?>" />
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#headerMenu" aria-controls="headerMenu" aria-expanded="false" aria-label="<?php echo e(__('Toggle navigation')); ?>">
             <span class="navbar-toggler-icon"></span>

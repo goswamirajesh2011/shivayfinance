@@ -26,7 +26,7 @@
                 <form role="form" name="applyloan" id="applyloan" action="{{ route('front.storeloan') }}" method="POST">
                     @csrf
                     @method('post')
-                    <input type="hidden" name="loantype_id" id="loantype_id" value="{{ $loanId }}">
+                    <input type="hidden" name="loan_id" id="loan_id" value="{{ $loanId }}">
                     <div class="row">
                         <div class="col-sm-4">
                             <div class="form-group">

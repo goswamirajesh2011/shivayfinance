@@ -19,6 +19,7 @@ class CreateLoansTable extends Migration
             $table->text("description")->nullable();
             $table->text("doc_req")->nullable();
             $table->text("faq")->nullable();
+            $table->string('icon')->nullable();
             $table->integer("status");
             $table->timestamps();
         });

@@ -45,11 +45,26 @@
 										</div> -->
 									</div>
 								</div>
+								<div class="form-group">
+									<label for="loan_id">Loan</label>
+									@if($loans->count() > 0)
+									<select class="form-control" id="loan_id" name="loan_id">
+										@foreach($loans as $loan)
+										<option value="{{$loan->id}}">{{$loan->name}}</option>
+										@endforeach
+									</select>
+									@else
+									<div class="text-danger">
+										Loan not exist!! <a href="{{route('admin.loan.create')}}">Create Loan First</a>
+									</div>
+									@endif
+								</div>
 			                </div>
 			                <!-- /.card-body -->
 
 			                <div class="card-footer">
 			                  <button type="submit" class="btn btn-primary">Submit</button>
+							  <a href="{{route('admin.slider.index')}}" class="btn btn-danger">Cancel</a>
 			                </div>
 		              	</form>
 		            </div>

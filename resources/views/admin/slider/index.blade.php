@@ -32,7 +32,7 @@
                                 <th scope="row">{{ $slide->id }}</th>
                                 <td>{{ $slide->name }}</td>
                                 <td>{{ $slide->caption }}</td>
-                                <td><img src="{{ asset('storage/slider').'/'.$slide->slide }}" width="50" /></td>
+                                <td><img src="{{ asset('public/storage/slider').'/'.$slide->slide }}" width="50" /></td>
                                 <td>
                                     <a href="{{ route('admin.slider.edit', $slide->id) }}" title="Edit Slide">
                                         <i class="fa fa-edit" aria-hidden="true"></i>

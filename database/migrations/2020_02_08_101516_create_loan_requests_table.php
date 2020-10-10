@@ -15,7 +15,7 @@ class CreateLoanRequestsTable extends Migration
     {
         Schema::create('loan_requests', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('loantype_id');
+            $table->integer('loan_id');
             $table->integer('amount');
             $table->string('purpose')->nullable();
             $table->string('business_name')->nullable();

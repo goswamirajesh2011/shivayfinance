@@ -8,11 +8,7 @@
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
-                    @isset($url)
-                    <form method="POST" action='{{ url("register/$url") }}' aria-label="{{ __('Register') }}">
-                    @else
                     <form method="POST" action="{{ route('register') }}" aria-label="{{ __('Register') }}">
-                    @endisset
                         @csrf
 
                         <div class="form-group row">

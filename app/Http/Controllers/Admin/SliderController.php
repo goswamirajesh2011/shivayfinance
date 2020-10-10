@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use App\Slider;
+use App\Loan;
 
 class SliderController extends Controller
 {
@@ -17,9 +18,10 @@ class SliderController extends Controller
      */
     public function index()
     {
+        $title = "Slider";
         $slides = Slider::get();
         //dd($slides);
-        return view('admin.slider.index', compact('slides'));
+        return view('admin.slider.index', compact('slides', 'title'));
     }
 
     /**
@@ -29,7 +31,10 @@ class SliderController extends Controller
      */
     public function create()
     {
-        return view('admin.slider.create');
+        $title = "Slider Create";
+        $loans = Loan::where('status', 1)->get();
+        //dd($loans->toArray());
+        return view('admin.slider.create', compact('loans', 'title'));
     }
 
     /**
@@ -53,6 +58,7 @@ class SliderController extends Controller
             'name' => $request->name,
             'caption' => $request->caption,
             'slide' => $storageName,
+            'loan_id' => $request->loan_id,
             'status' => 1
         ]);
         $slider->save();
@@ -67,7 +73,8 @@ class SliderController extends Controller
      */
     public function show(Slider $slider)
     {
-        return view('admin.slider.show');
+        $title = "Slider";
+        return view('admin.slider.show', compact('title'));
     }
 
     /**
@@ -78,9 +85,11 @@ class SliderController extends Controller
      */
     public function edit($id)
     {
+        $title = "Slider Edit";
+        $loans = Loan::where('status', 1)->get();
         $slide = Slider::find($id);
         //dd($slider->toArray());
-        return view('admin.slider.edit', compact('slide'));
+        return view('admin.slider.edit', compact('slide', 'loans', 'title'));
     }
 
     /**
@@ -99,6 +108,7 @@ class SliderController extends Controller
         $slide = Slider::find($id);
         $slide->name = $request->name;
         $slide->caption = $request->caption;
+        $slide->loan_id = $request->loan_id;
         if( $request->hasFile('slide') ){
             $path = public_path("storage\slider\\$slide->slide");
             if( File::Exists($path) ){

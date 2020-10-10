@@ -32,7 +32,7 @@
 <nav class="navbar navbar-expand-md sticky-top navbar-dark bg-success shadow-sm main-menu">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
-            {{ config('app.name', 'Shivay Finance') }}
+            <img src="{{ asset('public/storage/uploads/').'/'.Setting::get('logo') }}" width="50" title="{{ config('app.name', 'Shivay Finance') }}" />
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#headerMenu" aria-controls="headerMenu" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
             <span class="navbar-toggler-icon"></span>

@@ -14,4 +14,7 @@ class Contact extends Model
     protected $fillable = [
     	'username', 'email', 'phone', 'state', 'city', 'message'
     ];
+
+    public $timestamps = true;
+
 }

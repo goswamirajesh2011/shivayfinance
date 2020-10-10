@@ -41,6 +41,14 @@
 									<label for="faq">FAQ (Frequently Asked Question)</label>
 									<textarea class="form-control faq" name="faq" id="faq"></textarea>
 								</div>
+								<div class="form-group">
+									<label for="icon">Icon</label>
+									<select class="form-control" id="icon" name="icon">
+										@foreach(config('fa-icon') as $indx => $icon)
+										<option value="{{$indx}}">{{$icon}} </option>
+										@endforeach
+									</select>
+								</div>
 							</div>
 			                <!-- /.card-body -->
 

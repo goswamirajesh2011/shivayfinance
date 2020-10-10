@@ -12,6 +12,16 @@ class Slider extends Model
      * @var array
      */
     protected $fillable = [
-    	'name', 'caption', 'slide', 'status'
+    	'name', 'caption', 'slide', 'loan_id', 'status'
     ];
+    
+    public $timestamps = true;
+
+    /**
+     * slider belongs to loan
+    */
+    public function loan(){
+        return $this->belongsTo('App\Loan');
+    }
+
 }

@@ -26,10 +26,10 @@ class FrontController extends Controller
 	*
 	*/
     public function index(){
-    	$slides = Slider::where(["status"=>1])->get();
+    	$slides = Slider::with('loan')->where(["status"=>1])->get();
         $loans = Loan::get();
         $partners = Partner::where(["status"=>1])->get();
-    	//dd($partners->toArray());
+    	//dd($slides->toArray());
     	return view('front.index', compact('slides', 'loans', 'partners'));
     }
 
@@ -55,7 +55,7 @@ class FrontController extends Controller
         ]);
 
         $loanRequest = LoanRequest::create([
-            'loantype_id' => $request->loantype_id,
+            'loan_id' => $request->loan_id,
             'amount' => $request->amount,
             'purpose' => $request->purpose,
             'business_name' => $request->business_name,

@@ -3,10 +3,23 @@
         <div class="row">
             <div class="col-md-12 p-0">
                 <?php if(!empty($slides->toArray())): ?>
-                <section class="slider">
+                <section class="front-slider">
                     <?php $__currentLoopData = $slides; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $slide): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <div>
                         <img src='<?php echo e(asset("public/storage/slider/$slide->slide")); ?>' class="img-responsive">
+                        <div class="slide-content">
+                            <h4><?php echo e($slide->loan->name); ?></h4>
+                            <p><?php echo e(strip_tags($slide->loan->description)); ?></p>
+                            <p><a href="<?php echo e(route('front.applyloan', $slide->loan->id)); ?>" class="btn btn-success">Apply Now</a></p>
+                        </div>
+                    </div>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </section>
+                <section class="slider-nav">
+                    <?php $__currentLoopData = $slides; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $slide): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <div>
+                        <i class="fa <?php echo e($slide->loan->icon); ?>"></i>
+                        <p><?php echo e($slide->loan->name); ?></p>
                     </div>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </section>
@@ -17,80 +30,38 @@
         </div>
     </div>
 
-    <div class="container">
+    <div class="container-fluid">
         <h1 class="text-center text-success">Our Services</h1>
         <div class="row">
-            <?php if( !empty($loans->toArray()) ): ?>
-                <?php $__currentLoopData = $loans; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $loan): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <div class="col-md-3 margin-b services-box">
-                    <div class="card border-success">
-                        <div class="card-header bg-success text-center rounded">
-                            <h4 class="text-white"><?php echo e($loan->name); ?></h4>
+            <div class="col-md-12 no-padding">
+                <?php if( !empty($loans->toArray()) ): ?>
+                    <ul class="nav nav-tabs" id="serviceTab" role="tablist">
+                        <?php $count = 0; ?>
+                        <?php $__currentLoopData = $loans; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $loan): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <li class="nav-item">
+                            <a class="nav-link <?php if($count++ == 0): ?> active <?php endif; ?>" id="loan-<?php echo e($loan->id); ?>-tab" data-toggle="tab" href="#loan-<?php echo e($loan->id); ?>" role="tab" aria-controls="loan-<?php echo e($loan->id); ?>" aria-selected="true"><?php echo e($loan->name); ?></a>
+                        </li>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    </ul>
+                    <div class="tab-content" id="serviceTabContent">
+                        <?php $count = 0; ?>
+                        <?php $__currentLoopData = $loans; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $loan): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <div class="tab-pane <?php if($count++ == 0): ?> fade show active <?php endif; ?>" id="loan-<?php echo e($loan->id); ?>" role="tabpanel" aria-labelledby="loan-<?php echo e($loan->id); ?>-tab">
+                            <p><?php echo e(strip_tags($loan->description)); ?></p>
+                            <p class="text-center"><a href="<?php echo e(route('front.applyloan', $loan->id)); ?>" class="btn btn-success">Apply Now</a></p>
                         </div>
-                        <div class="card-body text-justify">
-                            <!--Accordion wrapper-->
-                            <div class="accordion md-accordion accordion-1" id="loanAccordion<?php echo e($loan->id); ?>" role="tablist">
-                                <div class="card">
-                                    <div class="card-header border-success" role="tab" id="loanDesc<?php echo e($loan->id); ?>">
-                                        <h5 class="text-uppercase mb-0">
-                                            <a class="text-success font-weight-bold" data-toggle="collapse" href="#loanDescCollapse<?php echo e($loan->id); ?>" aria-expanded="true" aria-controls="loanDescCollapse<?php echo e($loan->id); ?>">
-                                                Description
-                                            </a>
-                                        </h5>
-                                    </div>
-                                    <div id="loanDescCollapse<?php echo e($loan->id); ?>" class="collapse show" role="tabpanel" aria-labelledby="loanDesc<?php echo e($loan->id); ?>" data-parent="#loanAccordion<?php echo e($loan->id); ?>">
-                                        <div class="card-body">
-                                            <p class=""><?php echo e($loan->description); ?></p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card">
-                                    <div class="card-header border-success" role="tab" id="loanDocs<?php echo e($loan->id); ?>">
-                                        <h5 class="text-uppercase mb-0">
-                                            <a class="collapsed font-weight-bold text-success" data-toggle="collapse" href="#loanDocsCollapse<?php echo e($loan->id); ?>" aria-expanded="false" aria-controls="loanDocsCollapse<?php echo e($loan->id); ?>">
-                                                Document Required
-                                            </a>
-                                        </h5>
-                                    </div>
-                                    <div id="loanDocsCollapse<?php echo e($loan->id); ?>" class="collapse" role="tabpanel" aria-labelledby="loanDocs<?php echo e($loan->id); ?>" data-parent="#loanAccordion<?php echo e($loan->id); ?>">
-                                        <div class="card-body">
-                                            <ul>
-                                                <li>doc one</li>
-                                                <li>doc two</li>
-                                                <li>doc three</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card">
-                                    <div class="card-header border-success" role="tab" id="loanFaq<?php echo e($loan->id); ?>">
-                                        <h5 class="text-uppercase mb-0">
-                                            <a class="collapsed font-weight-bold text-success" data-toggle="collapse" href="#loanFaqCollapse<?php echo e($loan->id); ?>" aria-expanded="false" aria-controls="loanFaqCollapse<?php echo e($loan->id); ?>">FAQ</a>
-                                        </h5>
-                                    </div>
-                                    <div id="loanFaqCollapse<?php echo e($loan->id); ?>" class="collapse" role="tabpanel" aria-labelledby="loanFaq<?php echo e($loan->id); ?>" data-parent="#loanAccordion<?php echo e($loan->id); ?>">
-                                        <div class="card-body">
-                                            <p class="">Frequently Asked questions</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--Accordion wrapper-->
-                        </div>
-                        <div class="card-footer text-center">
-                            <a href="<?php echo e(route('front.applyloan', $loan->id)); ?>" class="btn btn-success">Apply Now</a>
-                        </div>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </div>
-                </div>
-                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-            <?php else: ?>
-                <div class="col-md-12">
-                    <div class="alert alert-danger text-center">Loans not found!! Add from dashboard</div>
-                </div>
-            <?php endif; ?>
+                <?php else: ?>
+                    <div class="col-md-12">
+                        <div class="alert alert-danger text-center">Loans not found!! Add from dashboard</div>
+                    </div>
+                <?php endif; ?>
+            </div>
         </div>
-        <hr class="border-success">
+    </div>
 
+    <div class="container">
         <div class="row">
             <div class="col-md-6">
                 <h1 class="text-center text-success">How It Works ?</h1>
@@ -119,7 +90,7 @@
         <div class="partners">
         <?php $__currentLoopData = $partners; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $partner): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
         <div>
-            <img class="" title="<?php echo e($partner->caption); ?>" src='<?php echo e(asset("storage/partner/$partner->logo")); ?>' class="img-responsive">
+            <img class="" title="<?php echo e($partner->caption); ?>" src='<?php echo e(asset("public/storage/partner/$partner->logo")); ?>' class="img-responsive">
         </div>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </div>
@@ -136,15 +107,56 @@
     <?php endif; ?>
 <?php $__env->stopSection(); ?>
 
+<?php $__env->startSection('style'); ?>
+<style>
+.front-slider .slick-slide{
+    position: relative;
+}
+.front-slider .slick-slide div.slide-content{
+    position: absolute;
+    top: 25%;
+    left: 10%;
+    z-index: 9;
+    width: 40%;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 5px;
+}
+.slider-nav .slick-list{
+    text-align: center;
+}
+.slider-nav .slick-current{
+    background-color: #38c172;
+    color: #fff;
+    border-top: 2px solid #38c172;
+    padding: 10px;
+}
+.slider-nav .slick-slide{
+    border-top: 2px solid #38c172;
+}
+</style>
+<?php $__env->stopSection(); ?>
+
 <?php $__env->startSection('js'); ?>
     <script type="text/javascript">
-        $(".slider").slick({
-            dots: true,
-            infinite: true,
+        $(".front-slider").slick({
+            //dots: true,
+            //infinite: true,
             slidesToShow: 1,
             slidesToScroll: 1,
+            //autoplay: true,
+            //autoplaySpeed: 2000,
+            asNavFor: '.slider-nav'
+        });
+        $(".slider-nav").slick({
+            dots: true,
+            slidesToShow: 4,
+            slidesToScroll: 1,
+            asNavFor: '.front-slider',
+            centerMode: true,
+            focusOnSelect: true,
             autoplay: true,
-            autoplaySpeed: 2000,
+            //autoplaySpeed: 2000,
         });
         
         $('.partners').slick({

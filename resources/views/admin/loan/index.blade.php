@@ -21,6 +21,9 @@
                             <th scope="col">#</th>
                             <th scope="col">Name</th>
                             <th scope="col">Description</th>
+                            <th scope="col">Doc Request</th>
+                            <th scope="col">FAQ</th>
+                            <th scope="col">Icon</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
@@ -30,7 +33,10 @@
                             <tr>
                                 <th scope="row">{{ $loan->id }}</th>
                                 <td>{{ $loan->name }}</td>
-                                <td>{{ substr($loan->description, 0, 100) }}...</td>
+                                <td>{{ substr(strip_tags($loan->description), 0, 50) }}...</td>
+                                <td>{{ substr(strip_tags($loan->doc_req), 0, 50) }}...</td>
+                                <td>{{ substr(strip_tags($loan->faq), 0, 50) }}...</td>
+                                <td><i class="fa {{ $loan->icon }}"></i></td>
                                 <td>
                                     <a href="{{ route('admin.loan.edit', $loan->id) }}" title="Edit Loan">
                                         <i class="fa fa-edit" aria-hidden="true"></i>
@@ -57,6 +63,9 @@
                             <th scope="col">#</th>
                             <th scope="col">Name</th>
                             <th scope="col">Description</th>
+                            <th scope="col">Doc Request</th>
+                            <th scope="col">FAQ</th>
+                            <th scope="col">Icon</th>
                             <th scope="col">Action</th>
                         </tr>
                     </tfoot>

@@ -17,9 +17,10 @@ class PartnerController extends Controller
      */
     public function index()
     {
+        $title = "Partner";
         $partners = Partner::paginate(5);
         //dd($partners);
-        return view('admin.partner.index', compact('partners'));
+        return view('admin.partner.index', compact('partners', 'title'));
     }
 
     /**
@@ -29,7 +30,8 @@ class PartnerController extends Controller
      */
     public function create()
     {
-        return view('admin.partner.create');
+        $title = "Partner Create";
+        return view('admin.partner.create', compact('title'));
     }
 
     /**
@@ -67,7 +69,8 @@ class PartnerController extends Controller
      */
     public function show($id)
     {
-        return view('admin.partner.show');
+        $title = "Partner";
+        return view('admin.partner.show', compact('title'));
     }
 
     /**
@@ -78,9 +81,10 @@ class PartnerController extends Controller
      */
     public function edit($id)
     {
+        $title = "Partner Edit";
         $partner = Partner::find($id);
         //dd($partner->toArray());
-        return view('admin.partner.edit', compact('partner'));
+        return view('admin.partner.edit', compact('partner', 'title'));
     }
 
     /**
